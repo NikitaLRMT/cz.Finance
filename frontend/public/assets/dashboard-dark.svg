@@ -1,0 +1,44 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="800" height="500" rx="8" fill="#1E2130"/>
+  
+  <!-- Боковая панель -->
+  <rect x="20" y="20" width="180" height="460" rx="8" fill="#222531"/>
+  
+  <!-- Логотип -->
+  <rect x="50" y="40" width="120" height="40" rx="4" fill="#3861FB"/>
+  <rect x="60" y="52" width="100" height="16" rx="2" fill="#222531"/>
+  
+  <!-- Пункты меню -->
+  <rect x="50" y="120" width="120" height="36" rx="4" fill="#2B2F3E"/>
+  <rect x="50" y="166" width="120" height="36" rx="4" fill="#2B2F3E"/>
+  <rect x="50" y="212" width="120" height="36" rx="4" fill="#2B2F3E"/>
+  <rect x="50" y="258" width="120" height="36" rx="4" fill="#2B2F3E"/>
+  <rect x="50" y="304" width="120" height="36" rx="4" fill="#2B2F3E"/>
+  
+  <!-- Главная область -->
+  <rect x="220" y="20" width="560" height="100" rx="8" fill="#222531"/>
+  
+  <!-- Карточки метрик -->
+  <rect x="240" y="40" width="160" height="60" rx="8" fill="#2B2F3E"/>
+  <rect x="420" y="40" width="160" height="60" rx="8" fill="#2B2F3E"/>
+  <rect x="600" y="40" width="160" height="60" rx="8" fill="#2B2F3E"/>
+  
+  <!-- График -->
+  <rect x="220" y="140" width="340" height="200" rx="8" fill="#222531"/>
+  <polyline points="240,300 290,260 340,280 390,220 440,240 490,200 540,180" stroke="#3861FB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Круговая диаграмма -->
+  <rect x="580" y="140" width="200" height="200" rx="8" fill="#222531"/>
+  <circle cx="680" cy="240" r="70" fill="#1E2130"/>
+  <path d="M680,240 L680,170 A70,70 0 0,1 741,270 Z" fill="#3861FB"/>
+  <path d="M680,240 L741,270 A70,70 0 0,1 680,310 Z" fill="#16C784"/>
+  <path d="M680,240 L680,310 A70,70 0 0,1 619,170 Z" fill="#F3BA2F"/>
+  <path d="M680,240 L619,170 A70,70 0 0,1 680,170 Z" fill="#EA3943"/>
+  
+  <!-- Таблица транзакций -->
+  <rect x="220" y="360" width="560" height="120" rx="8" fill="#222531"/>
+  <line x1="220" y1="400" x2="780" y2="400" stroke="#2B2F3E" stroke-width="2"/>
+  <line x1="220" y1="440" x2="780" y2="440" stroke="#2B2F3E" stroke-width="2"/>
+  <line x1="220" y1="480" x2="780" y2="480" stroke="#2B2F3E" stroke-width="2"/>
+</svg> 

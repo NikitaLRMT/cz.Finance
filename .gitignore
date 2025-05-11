@@ -1,1 +1,79 @@
+# IDE и редакторы
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Переменные окружения и конфигурации
+.env
+.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+
+# Логи
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Временные папки и файлы
+tmp/
+temp/
+.tmp
+.temp
+
+# Директории зависимостей
+node_modules/
+/frontend/node_modules/
+/frontend/.pnp
+/frontend/.pnp.js
+
+# Директории сборки
+/dist
+/build
+/frontend/build
+/frontend/dist
+
+# Кэш и тестовые файлы
+.npm
+.eslintcache
+.nyc_output
+/coverage
+/frontend/coverage
+
+# Файлы загрузок и пользовательского контента
+uploads/
+uploads/avatars/
+/uploads/*
+!/uploads/.gitkeep
+
+# Go-специфичные исключения
+/bin
+/vendor
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Файлы разработки и прочие документы
+TELEGRAM_SETUP.md
+reset_user_password.sql
+
+# Docker и деплой
+.dockerignore
+docker-compose.override.yml
+
+# Прочее
+Thumbs.DS_Store
+.Spotlight-V100
+.Trashes

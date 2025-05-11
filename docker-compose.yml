@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    container_name: finance_backend
+    ports:
+      - "8080:8080"
+    networks:
+      - finance-network
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: finance
+      DB_SSLMODE: disable
+      SERVER_PORT: 8080
+      JWT_SECRET: your-secret-key
+      JWT_EXPIRES_IN: 24
+    volumes:
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    container_name: finance_frontend
+    ports:
+      - "3000:80"
+    networks:
+      - finance-network
+    depends_on:
+      - backend
+    volumes:
+      - ./uploads:/usr/share/nginx/html/uploads
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14
+    container_name: finance_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: finance
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - finance-network
+
+  telegram:
+    build:
+      context: .
+      dockerfile: docker/telegram.Dockerfile
+    container_name: finance_telegram
+    restart: on-failure
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    environment:
+      API_URL: http://backend:8080/api
+    networks:
+      - finance-network
+
+networks:
+  finance-network:
+    driver: bridge
+
+volumes:
+  postgres_data: 

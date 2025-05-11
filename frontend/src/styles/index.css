@@ -1,0 +1,293 @@
+/* Импорт шрифта Inter от Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #171924;
+  color: #F8FAFD;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.auth-form-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at center, #222531, #13151F);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-form-container::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232B2F3E' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.auth-form-card {
+  background-color: #222531;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #2B2F3E;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.auth-tabs {
+  margin-bottom: 1.5rem;
+}
+
+.auth-submit-button {
+  margin-top: 1.5rem !important;
+  height: 48px;
+}
+
+.auth-form-divider {
+  margin: 1.5rem 0 !important;
+  color: #A6B0C3;
+}
+
+.auth-social-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-control {
+  margin-bottom: 16px;
+}
+
+.page-container {
+  padding: 24px;
+}
+
+.dashboard-card {
+  margin-bottom: 24px;
+  transition: all 0.25s ease;
+  border: 1px solid #2B2F3E;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background-color: #222531;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.chart-container {
+  height: 300px;
+  margin-bottom: 24px;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Стиль для таблиц */
+.table-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2B2F3E;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background-color: #222531;
+}
+
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.crypto-table th {
+  background-color: #13151F;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #A6B0C3;
+  border-bottom: 1px solid #2B2F3E;
+}
+
+.crypto-table td {
+  padding: 16px;
+  border-bottom: 1px solid #2B2F3E;
+}
+
+.crypto-table tr:hover {
+  background-color: #2B2F3E;
+}
+
+/* Стиль для карточек активов */
+.asset-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2B2F3E;
+  transition: all 0.25s ease;
+  background-color: #222531;
+}
+
+.asset-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.asset-change-positive {
+  color: #16C784;
+  font-weight: 500;
+}
+
+.asset-change-negative {
+  color: #EA3943;
+  font-weight: 500;
+}
+
+/* Стиль для чипов */
+.status-chip {
+  border-radius: 16px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-chip-success {
+  background-color: rgba(22, 199, 132, 0.15);
+  color: #16C784;
+}
+
+.status-chip-error {
+  background-color: rgba(234, 57, 67, 0.15);
+  color: #EA3943;
+}
+
+.status-chip-warning {
+  background-color: rgba(243, 186, 47, 0.15);
+  color: #F3BA2F;
+}
+
+.status-chip-info {
+  background-color: rgba(56, 97, 251, 0.15);
+  color: #3861FB;
+}
+
+/* Стиль для лендинга */
+.landing-container {
+  background-color: #171924;
+  min-height: 100vh;
+}
+
+.landing-hero {
+  background: linear-gradient(to right, #13151F, #222531);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233861FB' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.landing-features {
+  padding: 4rem 2rem;
+}
+
+.landing-feature-card {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.landing-feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.landing-feature-icon {
+  background: linear-gradient(135deg, #3861FB, #0035C7);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(56, 97, 251, 0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .page-container {
+    padding: 16px;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+
+  .landing-hero {
+    padding: 4rem 1rem;
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+} 
