@@ -17,9 +17,6 @@ import {
 } from '@mui/material';
 import {
   AccountBalanceWallet as WalletIcon,
-  Google as GoogleIcon,
-  Facebook as FacebookIcon,
-  Apple as AppleIcon,
   Visibility as VisibilityIcon,
   VisibilityOff as VisibilityOffIcon
 } from '@mui/icons-material';
@@ -27,6 +24,13 @@ import { useAuth } from '../hooks/useAuth';
 
 export default function Register() {
   const [formData, setFormData] = useState({
+    email: '',
+    username: '',
+    password: '',
+    first_name: '',
+    last_name: ''
+  });
+  const [errors, setErrors] = useState({
     email: '',
     username: '',
     password: '',
@@ -54,11 +58,53 @@ export default function Register() {
       ...prev,
       [name]: value
     }));
+    
+    // Очищаем ошибку для поля при изменении
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { ...errors };
+    
+    // Проверка обязательных полей
+    Object.keys(formData).forEach(field => {
+      if (!formData[field].trim()) {
+        newErrors[field] = 'Поле обязательно для заполнения';
+        isValid = false;
+      }
+    });
+    
+    // Проверка email
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Введите корректный email адрес';
+      isValid = false;
+    }
+    
+    // Проверка длины пароля
+    if (formData.password && formData.password.length < 6) {
+      newErrors.password = 'Пароль должен содержать минимум 6 символов';
+      isValid = false;
+    }
+    
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    // Проверяем валидность формы
+    if (!validateForm()) {
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -137,6 +183,8 @@ export default function Register() {
                 onChange={handleChange}
                 disabled={loading}
                 sx={{ mb: 1 }}
+                error={!!errors.first_name}
+                helperText={errors.first_name}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -151,6 +199,8 @@ export default function Register() {
                 onChange={handleChange}
                 disabled={loading}
                 sx={{ mb: 1 }}
+                error={!!errors.last_name}
+                helperText={errors.last_name}
               />
             </Grid>
           </Grid>
@@ -167,6 +217,8 @@ export default function Register() {
             onChange={handleChange}
             disabled={loading}
             sx={{ mb: 2 }}
+            error={!!errors.username}
+            helperText={errors.username}
           />
           
           <TextField
@@ -181,6 +233,8 @@ export default function Register() {
             onChange={handleChange}
             disabled={loading}
             sx={{ mb: 2 }}
+            error={!!errors.email}
+            helperText={errors.email}
           />
           
           <TextField
@@ -196,6 +250,8 @@ export default function Register() {
             onChange={handleChange}
             disabled={loading}
             sx={{ mb: 2 }}
+            error={!!errors.password}
+            helperText={errors.password || 'Минимум 6 символов'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -224,24 +280,6 @@ export default function Register() {
           >
             {loading ? <CircularProgress size={24} /> : 'Зарегистрироваться'}
           </Button>
-          
-          <Divider sx={{ my: 3 }}>
-            <Typography variant="body2" color="text.secondary">
-              или зарегистрируйтесь с помощью
-            </Typography>
-          </Divider>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-            <IconButton sx={{ bgcolor: 'background.light', color: '#EA4335', '&:hover': { bgcolor: 'background.light' } }}>
-              <GoogleIcon />
-            </IconButton>
-            <IconButton sx={{ bgcolor: 'background.light', color: '#1877F2', '&:hover': { bgcolor: 'background.light' } }}>
-              <FacebookIcon />
-            </IconButton>
-            <IconButton sx={{ bgcolor: 'background.light', color: 'white', '&:hover': { bgcolor: 'background.light' } }}>
-              <AppleIcon />
-            </IconButton>
-          </Box>
           
           <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2" color="text.secondary">

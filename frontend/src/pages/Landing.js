@@ -84,7 +84,7 @@ export default function Landing() {
                   size="large"
                   sx={{ py: 1.5, px: 4, fontWeight: 'bold' }}
                 >
-                  Начать бесплатно
+                  Зарегистрироваться
                 </Button>
                 <Button 
                   component={RouterLink} 
@@ -100,7 +100,7 @@ export default function Landing() {
               <Box sx={{ mt: 4, display: 'flex', alignItems: 'center' }}>
                 <CheckCircleIcon color="success" sx={{ mr: 1 }} />
                 <Typography variant="body2" color="text.secondary">
-                  14-дневный пробный период. Регистрация за 2 минуты.
+                  Регистрация за 2 минуты.
                 </Typography>
               </Box>
             </Grid>
@@ -324,7 +324,7 @@ export default function Landing() {
               }
             }}
           >
-            Начать бесплатно
+            Зарегистрироваться
           </Button>
         </Container>
         <Box

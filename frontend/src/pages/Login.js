@@ -17,16 +17,17 @@ import {
   Grid
 } from '@mui/material';
 import {
-  AccountBalanceWallet as WalletIcon,
-  Google as GoogleIcon,
-  Facebook as FacebookIcon,
-  Apple as AppleIcon
+  AccountBalanceWallet as WalletIcon
 } from '@mui/icons-material';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({
+    email: '',
+    password: ''
+  });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [tabValue, setTabValue] = useState(0);
@@ -37,9 +38,58 @@ export default function Login() {
     setTabValue(newValue);
   };
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (errors.email) {
+      setErrors(prev => ({
+        ...prev,
+        email: ''
+      }));
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (errors.password) {
+      setErrors(prev => ({
+        ...prev,
+        password: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors = { ...errors };
+    
+    // Проверка email
+    if (!email.trim()) {
+      newErrors.email = 'Email обязателен для заполнения';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = 'Введите корректный email адрес';
+      isValid = false;
+    }
+    
+    // Проверка пароля
+    if (!password.trim()) {
+      newErrors.password = 'Пароль обязателен для заполнения';
+      isValid = false;
+    }
+    
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    // Проверяем валидность формы
+    if (!validateForm()) {
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -144,9 +194,11 @@ export default function Login() {
             autoComplete="email"
             autoFocus
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             disabled={loading}
             sx={{ mb: 2 }}
+            error={!!errors.email}
+            helperText={errors.email}
           />
           
           <TextField
@@ -159,9 +211,11 @@ export default function Login() {
             id="password"
             autoComplete="current-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             disabled={loading}
             sx={{ mb: 1 }}
+            error={!!errors.password}
+            helperText={errors.password}
           />
           
           <Box sx={{ textAlign: 'right', mb: 2 }}>
@@ -179,24 +233,6 @@ export default function Login() {
           >
             {loading ? <CircularProgress size={24} /> : 'Войти'}
           </Button>
-          
-          <Divider sx={{ my: 3 }}>
-            <Typography variant="body2" color="text.secondary">
-              или войти с помощью
-            </Typography>
-          </Divider>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-            <IconButton sx={{ bgcolor: 'background.light', color: '#EA4335', '&:hover': { bgcolor: 'background.light' } }}>
-              <GoogleIcon />
-            </IconButton>
-            <IconButton sx={{ bgcolor: 'background.light', color: '#1877F2', '&:hover': { bgcolor: 'background.light' } }}>
-              <FacebookIcon />
-            </IconButton>
-            <IconButton sx={{ bgcolor: 'background.light', color: 'white', '&:hover': { bgcolor: 'background.light' } }}>
-              <AppleIcon />
-            </IconButton>
-          </Box>
           
           <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2" color="text.secondary">
